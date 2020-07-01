@@ -12,6 +12,7 @@ const CompanySchema = new mongoose.Schema(
         type:String,
         required:[true,"please provide password"],
         minlength:8,
+        select:false
     },
     passwordConfirm: {
         type: String,

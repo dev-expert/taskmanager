@@ -9,6 +9,7 @@ router.get("/users",async (req,res,next)=>{
     
     res.status(200).json({
         status:"ok",
+        result:user.length,
         data:{user}
     })
 })
