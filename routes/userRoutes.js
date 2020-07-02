@@ -37,4 +37,17 @@ router.post("/users",async (req,res)=>{
 
 })
 
+//delete user by ID
+router.delete("/user/:id",async(req,res)=>{
+    const user = await User.findByIdAndDelete(req.params.id)
+
+    res.status(203).json({
+        status:"ok",
+        data:{
+            message:"deleted"
+        }
+    })
+
+})
+
 module.exports = router
