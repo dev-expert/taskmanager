@@ -11,6 +11,7 @@
   "author": "rishav",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "dot-env": "0.0.1",
     "dotenv": "^8.2.0",
