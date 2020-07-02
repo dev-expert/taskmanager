@@ -1,5 +1,6 @@
 const express = require("express")
 const User = require("./../models/UserModel")
+const Task = require("./../models/TaskModel")
 
 const router = express.Router()
 
@@ -38,8 +39,11 @@ router.post("/users",async (req,res)=>{
 })
 
 //delete user by ID
-router.delete("/user/:id",async(req,res)=>{
+router.delete("/users/:id",async(req,res)=>{
     const user = await User.findByIdAndDelete(req.params.id)
+
+    //delete tasks related to that user
+    await Task.deleteMany({"owner":user._id})
 
     res.status(203).json({
         status:"ok",
@@ -47,7 +51,6 @@ router.delete("/user/:id",async(req,res)=>{
             message:"deleted"
         }
     })
-
 })
 
 module.exports = router
